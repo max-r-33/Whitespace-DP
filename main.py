@@ -1,31 +1,38 @@
-def loadDict():
-    dict = {}
+from collections import OrderedDict
+from trie import Node
 
-    file = open("dictionary.txt", "r")
-    lines = file.readlines()
-    rank = 1
-    
-    for l in lines:
+import fileinput
+
+dict = OrderedDict()
+results = []
+
+def loadDict():
+    file = fileinput.input(files=('dictionary.txt')) 
+    for l in file:
         line = l.strip()
         if "#!comment" not in line and (len(line) > 1 or line == "a" or  line == "A" or line == "I"):
-            dict[line.strip()] = rank
-            rank += 1
-
+            dict[line.strip()] = fileinput.lineno()
     file.close()
-    return dict
 
-def checkSentence(text, dict):
-    for start in range(0, len(text)):
-        for end in range(start + 1, len(text)):
-            part = text[start:end]
-            if part in dict:
-                print('true', part)
+def addSpace(str, result):
+    length = len(str)
+    for i in range(1, length+1):
+        part = str[0:i]
+        if part in dict:
+            if i == length:
+                result += part
+                results.append(result)
+                return
+            addSpace(str[i:length+1], result + part + " ")
 
 def main():
-    dict = loadDict()
+    loadDict()
     file = open("input.txt", "r")
     text = file.readline()
     file.close()
-    checkSentence(text, dict)
+    addSpace(text, "")
+    results.reverse()
+    for result in results:
+        print(result)
 
 main()
