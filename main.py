@@ -22,7 +22,7 @@ def loadDict():
 
 def main():
     loadDict()
-    # root.pprint()
+    root.pprint()
     file = open("input.txt", "r")
     inputText = file.readline()
     file.close()

@@ -7,8 +7,8 @@ class Node:
         self.children = {}     # dictionary of children nodes for ~ O(1) lookup
         self.endOfWord = False # whether this node is the end, tells us to stop searching
         
-    def add(root, word):
-        node = root
+    def add(self, word):
+        node = self
         for character in word:
             if character in node.children:
                 node = node.children[character]
