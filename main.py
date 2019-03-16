@@ -7,14 +7,25 @@ searched = {}
 def loadDict():
     file = fileinput.input(files=('dictionary.txt')) 
     lineNo = 1
+    wordsToSkip = ['ing', 'en', 'aut', 'de', 'ful', 'uti', 'n\'t', 'goe', 'dra', 'andra']
     for l in file:
         line = l.strip()
-        if "#!comment" not in line and (len(line) > 2 or line == "a" or  line == "A" or line == "I" or lineNo <= 200):
+        if "#!comment" not in line and line not in wordsToSkip and (len(line) > 2 or line == "a" or  line == "A" or line == "I" or lineNo <= 200):
             lineNo += 1
             dict.add(line)
     file.close()
 
+def extractWords(str, possibleWords):
+    result = ""
+    for i, val in enumerate(possibleWords):
+        if possibleWords[i] != 0:
+            start = i
+            end = i + val
+            result += str[start:end] + " "
+    return result
+
 def insertSpace(str):
+    punctuation = ['.',',']
     n = len(str)
     possibleWords = [0] * n
     usedInidices = [n]
@@ -49,7 +60,10 @@ def insertSpace(str):
             
         else:
             i -= 1
-    print(possibleWords)
+
+    # when loop is done, get words from the 
+    # array of indices of word beginnings
+    return extractWords(str, possibleWords)
 
             
 def main():
@@ -62,6 +76,6 @@ def main():
     file.close()
 
     print("Input: ", inputText)
-    insertSpace(inputText)
+    print(insertSpace(inputText))
 
 main()
