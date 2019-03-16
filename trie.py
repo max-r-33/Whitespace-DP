@@ -18,7 +18,10 @@ class Node:
                 node = new_node                     # set the current node to be the new node
         node.endOfWord = True
 
-    def search(self, text):
+    # If requireFullWord is true, then the function will only return true 
+    # when the last character searched is the end of the word. 
+    # Otherwise, prefixes will return true, this is the default behavior
+    def search(self, text, requireFullWord = False):
         node = self
         if node.children:
             for character in text:
@@ -27,6 +30,8 @@ class Node:
                 else:
                     return False
         else:
+            return False
+        if requireFullWord == True and node.endOfWord == False:
             return False
         return True
 

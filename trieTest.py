@@ -11,8 +11,9 @@ def main():
     Node.add(root, "stock")
     Node.add(root, "stop")
 
-    # print(root.search("hac"))
-    # print(root.search("hack"))
+    print(root.search("sto", True))
+    print(root.search("sto", False))
+    print(root.search("stop", True))
 
     
     root.pprint()
