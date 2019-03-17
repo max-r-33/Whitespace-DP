@@ -5,6 +5,8 @@ punctuation = ['.', '?', '!', ';', ',']
 dict = Node('root')
 searched = {}
 
+# iterates through dictionary file and adds
+# all words to a trie for fast searching
 def loadDict():
     file = fileinput.input(files=('dictionary.txt')) 
     lineNo = 1
@@ -27,6 +29,8 @@ def preProcess(str):
             res.append(' ')
     return ''.join(res)
 
+# iterates through array of possible words and
+# converts to string with spaces
 def extractWords(str, possibleWords, savedPunctuation):
     result = ""
     for i, val in enumerate(possibleWords):
@@ -38,6 +42,8 @@ def extractWords(str, possibleWords, savedPunctuation):
         result = result[:-1]
     return result + savedPunctuation
 
+# searches trie for combinations of characters
+# to form valid words
 def insertSpace(str):
     n = len(str)
     savedPunctuation = ""
