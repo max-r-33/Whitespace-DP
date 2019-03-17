@@ -108,6 +108,7 @@ def main():
     for t in inputText:
         res.append(insertSpace(t))
     output = ''.join(res)
+    print(output)
     file = open('output.txt', 'w+')
     file.write(output)
     file.close()
