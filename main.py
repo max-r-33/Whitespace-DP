@@ -95,10 +95,15 @@ def main():
     file = open("input.txt", "r")
     inputText = preProcess(file.readline()).split(' ')
     file.close()
+    
+    # iterates through sentences and 
+    # writes them to output.text
     res = []
     for t in inputText:
         res.append(insertSpace(t))
-    print("Input: ", inputText)
-    print(''.join(res))
+    output = ''.join(res)
+    file = open('output.txt', 'w+')
+    file.write(output)
+    file.close()
 
 main()
