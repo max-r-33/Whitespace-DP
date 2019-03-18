@@ -57,9 +57,6 @@ def insertSpace(str):
     i = n - 2
     
     while i >= 0:
-        if i in punctuation:
-            # add space after
-            i
         lastUnused = usedInidices[0]
         part = str[i:lastUnused]
         print(part, i, lastUnused)
