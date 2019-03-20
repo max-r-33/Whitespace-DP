@@ -1,1 +1,1 @@
-Listeningtomusic.SomethingIlikealot.
+Hereisasentence.Hereisanotherone.Letsseeifitbreaks.Willitbreakthistime?Letsassumeyouhaveafunctionwhichchecksifsomethingisawordusingadictionary.
